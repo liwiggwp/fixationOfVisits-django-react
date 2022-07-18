@@ -11,7 +11,7 @@ export const AuthProvider = ({children}) => {
     let [authTokens, setAuthTokens] = useState(null)
     let [user, setUser] = useState(null)
 
-    const history = useHistory()
+    //const history = useHistory()
 
     let loginUser = async (e )=> {
         e.preventDefault()       
@@ -28,7 +28,7 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
-            history.push('/')
+            //history.push('/')
         }else{
             alert('Something went wrong!')
         }

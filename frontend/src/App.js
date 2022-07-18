@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import Header from './components/Header'
+import PrivateRoute from './utils/PrivateRoute'
 
 const App = () => {
   return (
@@ -12,7 +13,12 @@ const App = () => {
         <AuthProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/"
+              element={ 
+                <PrivateRoute>
+                  <HomePage />
+                </PrivateRoute>}
+            />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
         </AuthProvider>
