@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import token
 from django.http import JsonResponse
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -6,6 +7,8 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+
+
 
 
 from .serializers import NoteSerializer
@@ -19,8 +22,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         # Add custom claims
         token['username'] = user.username
-        # ...
-
+        # from backend.script.script_login_modeus import loginMOD
+        # loginMOD(user.username, user.password)
+        
         return token
 
 
@@ -38,10 +42,18 @@ def getRoutes(request):
     return Response(routes)
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def getNotes(request):
-    user = request.user
-    notes = user.note_set.all()
-    serializer = NoteSerializer(notes, many=True)
-    return Response(serializer.data)
+#@api_view(['GET'])
+#@permission_classes([IsAuthenticated])
+#def getNotes(request):
+    #user = request.user
+    #notes = user.note_set.all()
+    #serializer = NoteSerializer(notes, many=True)
+    #return Response(serializer.data)
+
+@api_view(['POST'])
+def hello_world(request):   
+    from script.script_login_modeus import loginMOD
+    token = loginMOD(request.data['username'], request.data['password'])
+    return Response(token)
+
+   

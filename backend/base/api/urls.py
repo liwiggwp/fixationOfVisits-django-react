@@ -1,4 +1,5 @@
-from django.urls import path
+from django import urls
+from django.urls import path,re_path
 from . import views
 from .views import MyTokenObtainPairView
 
@@ -8,8 +9,9 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('', views.getRoutes),
-     path('notes/', views.getNotes),
+   # path('notes/', views.getNotes),
 
-    path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/', views.hello_world, name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
 ]
