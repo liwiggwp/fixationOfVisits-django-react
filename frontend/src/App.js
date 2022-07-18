@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 
 import HomePage from './pages/HomePage'
@@ -9,22 +9,22 @@ import PrivateRoute from './utils/PrivateRoute'
 const App = () => {
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <AuthProvider>
           <Header />
           <Routes>
             <Route path="/"
-              element={ 
+              element={
                 <PrivateRoute>
                   <HomePage />
                 </PrivateRoute>}
-            />
+            exact />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
         </AuthProvider>
-      </Router>
+      </BrowserRouter>
     </div>
   )
 }
-
+const Private = () => <div>private</div>;
 export default App
