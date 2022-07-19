@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
+
 import AuthContext from '../context/AuthContext'
 
 const HomePage = () => {
@@ -41,7 +42,6 @@ const HomePage = () => {
         </div>
     )
 }
-
 
 
 export default HomePage
