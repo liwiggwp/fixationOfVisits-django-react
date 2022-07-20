@@ -2,28 +2,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, {useContext, useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import  AuthProvider from './context/AuthContext'
+import { BrowserRouter, Route, Routes,Router } from 'react-router-dom'
+import  {AuthProvider} from './context/AuthContext'
 import {Context} from "./index";
 
-import PrivateRoute from './utils/PrivateRoute'
+
+import AppRouter from './components/AppRouter/AppRouter'
 import LoginPage from './pages/LoginPage'
 import Header from './components/Header/Header'
 import LessonsList from './components/LessonsList/LessonsList'
+import HomePage from './pages/HomePage';
 
 const App = observer(() => {
-const {user} = useContext(Context)
+  const {user} = useContext(Context)
 const [loading, setLoading] = useState(true)
   return (    
-    <div className="App">      
+    <div className="App"> 
+   
       <BrowserRouter>
         <AuthProvider>
-          <Header />
+          <Header/>
+          <AppRouter />
           <Routes>
-          <Route path="/"
-              element={<PrivateRoute>
-                <LessonsList />
-                </PrivateRoute>}
+           <Route path="/"
+              element={
+                <LessonsList />}
               exact />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
@@ -31,8 +34,8 @@ const [loading, setLoading] = useState(true)
       </BrowserRouter>
     </div>
   )
-})
+    })
+// })
 
-export default App
-
+export default App 
 
