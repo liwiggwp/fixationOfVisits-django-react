@@ -10,7 +10,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-tfile = r"C:\Users\liwiggwp\Documents\6 semestr\fixationOfVisits-django-react\backend\script\file\token.txt"
+tfile = "backend\\script\\file\\token.txt"
 
 def modeus_login(email, password):
     driver = selenium.webdriver.Chrome()
@@ -54,3 +54,6 @@ def loginMOD(email, password):
     print(token)
     return token
 
+email = "stud0000193420@study.utmn.ru"
+password='Ven13Kodo25$20@#'
+loginMOD(email, password)

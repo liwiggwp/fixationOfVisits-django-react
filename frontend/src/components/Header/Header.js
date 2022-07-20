@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import AuthContext from '../../context/AuthContext'
 import { Navbar, Container, Nav } from "react-bootstrap";
+import LoginPage from '../../pages/LoginPage';
 
 const Header = () => {
     let { user, logoutUser } = useContext(AuthContext)
@@ -20,9 +21,9 @@ const Header = () => {
                             {user ? (
                                 <Nav.Link href="#deets" onClick={logoutUser}>Выйти</Nav.Link>
                             ) : (
-                                <Nav.Link to="/login" >Login</Nav.Link>
+                                <Nav.Link href="/login" onClick={<LoginPage/>}  >Войти</Nav.Link>
                             )}
-                            
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -33,3 +34,4 @@ const Header = () => {
 
 
 export default Header
+

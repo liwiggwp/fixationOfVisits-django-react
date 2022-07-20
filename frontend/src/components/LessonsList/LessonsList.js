@@ -13,11 +13,11 @@ const LessonsList = observer(() => {
  
   return (
     <Row>
-         {lesson.lessons.map(lesson=>
+         {/* {lesson.lessons.map(lesson=> */}
             <CardLesson key={lesson.id} lesson={lesson}/>
               
                 
-        )}
+        {/* )} */}
         
     </Row>
   );

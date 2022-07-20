@@ -28,15 +28,20 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     #     return token
     
     @classmethod
-    def hello(request):   
+    def hello(request):
+        print("dfiehveh")
         from script.script_login_modeus import loginMOD
+        #from script.request_schedule import json_schedule
         token = loginMOD(request.data['username'], request.data['password'])
-        return token
+        #json_schedule(token)
+        
+        return token    
+
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
-
+    
 
 # @api_view(['GET'])
 # def getRoutes(request):
@@ -57,8 +62,8 @@ def getNotes(request):
 
 # @api_view(['POST'])
 # def hello_world(request):   
-#     from script.script_login_modeus import loginMOD
-#     token = loginMOD(request.data['username'], request.data['password'])
+#     from script.request_schedule import run
+#     run()
 #     return Response(token)
 
    

@@ -12,8 +12,8 @@ export const AuthProvider = ({children}) => {
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
 
-    let navigate = useNavigate();
-
+    let navigate = useNavigate()
+    
     let loginUser = async (e )=> {
         e.preventDefault()
         let response = await fetch('http://127.0.0.1:8000/api/token/', {

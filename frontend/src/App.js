@@ -3,29 +3,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useContext, useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
+import  AuthProvider from './context/AuthContext'
 import {Context} from "./index";
 
-import HomePage from './pages/HomePage'
+import PrivateRoute from './utils/PrivateRoute'
 import LoginPage from './pages/LoginPage'
 import Header from './components/Header/Header'
 import LessonsList from './components/LessonsList/LessonsList'
-import AppRouter from './components/AppRouter/AppRouter'
 
 const App = observer(() => {
-  const {user} = useContext(Context)
+const {user} = useContext(Context)
 const [loading, setLoading] = useState(true)
-  return (
-    <div className="App">
+  return (    
+    <div className="App">      
       <BrowserRouter>
         <AuthProvider>
           <Header />
-
-          <AppRouter />
           <Routes>
-            <Route path="/"
-              element={
-                <LessonsList />}
+          <Route path="/"
+              element={<PrivateRoute>
+                <LessonsList />
+                </PrivateRoute>}
               exact />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
@@ -36,3 +34,5 @@ const [loading, setLoading] = useState(true)
 })
 
 export default App
+
+

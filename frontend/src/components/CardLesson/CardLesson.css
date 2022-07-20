@@ -1,5 +1,12 @@
 .App {
-  text-align: center;
-  
+ 
+  width: '20rem';
+  height: '18rem';
+  margin: 20; 
+  padding: 20;
 }
 
+.align-me{
+  display: flex;
+  align-items: center;
+}
